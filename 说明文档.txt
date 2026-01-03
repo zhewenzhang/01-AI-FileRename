@@ -1,0 +1,43 @@
+# PDF 自动重命名与整理工具使用说明
+
+本工具使用 Google Gemini AI 自动识别 PDF 研报封面信息，并按统一格式重命名归档。
+
+## 最新功能特性
+- **智能中文命名**：AI 会自动阅读封面并生成精简有力的繁体中文标题，方便阅读。
+- **日期标准化**：日期格式统一修正为 YYMMDD（例如 250916），便于排序。
+- **自动归档**：处理后的文件会自动移动到 "已整理" 文件夹。
+
+## 1. 环境安装 (初次使用)
+在命令行中执行以下命令安装所需依赖：
+pip install -r requirements.txt
+
+## 2. 文件夹初始化
+执行以下命令创建 "未整理" 和 "已整理" 文件夹：
+python setup_folders.py
+
+## 3. 配置 API Key
+请确保目录下有一个名为 .env 的文件，并在其中填写您的 Google Gemini API Key：
+GEMINI_API_KEY=您的API密钥
+
+## 4. 使用步骤
+1. 将需要重命名的 PDF 文件放入 "未整理" 文件夹中。
+2. **测试运行 (推荐)**：
+   运行程序查看 AI 识别结果，此时不会修改文件：
+   python pdf_renamer.py
+
+3. **执行重命名**：
+   确认测试结果无误后，执行实际重命名和移动操作：
+   python pdf_renamer.py --execute
+
+## 常用命令速查
+# 安装依赖
+pip install -r requirements.txt
+
+# 初始化目录
+python setup_folders.py
+
+# 测试运行 (Dry Run)
+python pdf_renamer.py
+
+# 执行重命名 (Execute)
+python pdf_renamer.py --execute
